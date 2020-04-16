@@ -16,7 +16,7 @@ spec:
     spec:
       serviceAccountName: dex
       containers:
-      - image: quay.io/coreos/dex:4bede5eb80822fc3a7fc9edca0ed2605cd339d17
+      - image: gcr.io/arrikto/dexidp/dex:4bede5eb80822fc3a7fc9edca0ed2605cd339d17
         name: dex
         command: ["dex", "serve", "/etc/dex/cfg/config.yaml"]
         ports:
