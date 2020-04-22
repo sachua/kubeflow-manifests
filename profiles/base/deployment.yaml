@@ -5,6 +5,9 @@ metadata:
 spec:
   replicas: 1
   template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "false"
     spec:
       containers:
       - command:
@@ -16,7 +19,7 @@ spec:
         - $(userid-prefix)
         - "-workload-identity"
         - $(gcp-sa)
-        image: gcr.io/kubeflow-images-public/profile-controller:v1.0.0-ge50a8531
+        image: gcr.io/kubeflow-images-public/profile-controller:vmaster-g34aa47c2
         imagePullPolicy: Always
         name: manager
         livenessProbe:
@@ -25,6 +28,10 @@ spec:
             port: 8080
           initialDelaySeconds: 30
           periodSeconds: 30
+        ports:
+        - containerPort: 8080
+          name: manager-http
+          protocol: TCP
       - command:
         - /access-management
         args:
@@ -34,7 +41,7 @@ spec:
         - $(userid-header)
         - "-userid-prefix"
         - $(userid-prefix)
-        image: gcr.io/kubeflow-images-public/kfam:v1.0.0-gf3e09203
+        image: gcr.io/kubeflow-images-public/kfam:vmaster-gf3e09203
         imagePullPolicy: Always
         name: kfam
         livenessProbe:
@@ -43,4 +50,8 @@ spec:
             port: 8081
           initialDelaySeconds: 30
           periodSeconds: 30
+        ports:
+        - containerPort: 8081
+          name: kfam-http
+          protocol: TCP
       serviceAccountName: controller-service-account

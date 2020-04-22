@@ -11,6 +11,8 @@ spec:
     metadata:
       labels:
         name: pytorch-operator
+      annotations:
+        sidecar.istio.io/inject: "false"
     spec:
       containers:
       - command:
@@ -27,6 +29,6 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.name
-        image: gcr.io/kubeflow-images-public/pytorch-operator:v1.0.0-g047cf0f
+        image: gcr.io/kubeflow-images-public/pytorch-operator:vmaster-g047cf0f
         name: pytorch-operator
       serviceAccountName: pytorch-operator

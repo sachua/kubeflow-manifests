@@ -16,12 +16,12 @@ spec:
     spec:
       containers:
       - name: openldap
-        image: osixia/openldap
+        image: osixia/openldap:latest
         ports:
           - containerPort: 389
           - containerPort: 636
       - name: phpldapadmin
-        image: osixia/phpldapadmin
+        image: osixia/phpldapadmin:latest
         ports:
           - containerPort: 80
         env:
