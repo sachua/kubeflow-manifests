@@ -21,19 +21,19 @@ commonLabels:
 images:
 - name: gcr.io/knative-releases/knative.dev/serving/cmd/activator
   newName: gcr.io/knative-releases/knative.dev/serving/cmd/activator
-  digest: v0.11.1
+  newTag: v0.11.1
 - name: gcr.io/knative-releases/knative.dev/serving/cmd/autoscaler-hpa
   newName: gcr.io/knative-releases/knative.dev/serving/cmd/autoscaler-hpa
-  digest: v0.11.1
+  newTag: v0.11.1
 - name: gcr.io/knative-releases/knative.dev/serving/cmd/autoscaler
   newName: gcr.io/knative-releases/knative.dev/serving/cmd/autoscaler
-  digest: v0.11.1
+  newTag: v0.11.1
 - name: gcr.io/knative-releases/knative.dev/serving/cmd/networking/istio
   newName: gcr.io/knative-releases/knative.dev/serving/cmd/networking/istio
-  digest: v0.11.1
+  newTag: v0.11.1
 - name: gcr.io/knative-releases/knative.dev/serving/cmd/webhook
   newName: gcr.io/knative-releases/knative.dev/serving/cmd/webhook
-  digest: v0.11.1
+  newTag: v0.11.1
 - name: gcr.io/knative-releases/knative.dev/serving/cmd/controller
   newName: gcr.io/knative-releases/knative.dev/serving/cmd/controller
-  digest: v0.11.1
+  newTag: v0.11.1
