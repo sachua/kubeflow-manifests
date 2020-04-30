@@ -6,32 +6,10 @@ resources:
 - mlflow-ui-deployment.yaml
 - mlflow-ui-rbac.yaml
 - mlflow-ui-service.yaml
-configMapGenerator:
-- name: mlflow-parameters
-  env: params.env
-generatorOptions:
-  disableNameSuffixHash: true
 images:
 - name: mysql/mysql-server
   newTag: 5.7.28
   newName: mysql/mysql-server
-- name: mlflow_server
+- name: localhost:32000/mlflow_server
   newTag: latest
-  newName: mlflow_server
-vars:
-- name: clusterDomain
-  objref:
-    kind: ConfigMap
-    name: mlflow-parameters
-    apiVersion: v1
-  fieldref:
-    fieldpath: data.clusterDomain
-- name: namespace
-  objref:
-    kind: Service
-    name: katib-ui
-    apiVersion: v1
-  fieldref:
-    fieldpath: metadata.namespace
-configurations:
-- params.yaml
+  newName: localhost:32000/mlflow_server

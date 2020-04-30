@@ -12,9 +12,10 @@ spec:
     - uri:
         prefix: /mlflow/
     rewrite:
-      uri: /mlflow/
+      uri: /
     route:
     - destination:
-        host: mlflow-ui.$(namespace).svc.$(clusterDomain)
+        host: mlflow-ui.kubeflow.svc.cluster.local
         port:
           number: 80
+

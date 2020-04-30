@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mlflow-ui
+  namespace: kubeflow
   labels:
     app: mlflow
     component: ui
@@ -22,10 +23,10 @@ spec:
     spec:
       containers:
       - name: mlflow-server
-        image: mlflow_server
+        image: localhost:32000/mlflow_server
         imagePullPolicy: Never
-        args:
-        - 'mlflow server --backend-store-uri mysql+pymysql://mlflow_user:mlflow@mlflow-mysql.kubeflow:3306/mlflow_database --default-artifact-root s3://mlflow/ --host 0.0.0.0'
+        command: ["/bin/sh"]
+        args: ["-c","mlflow server --backend-store-uri mysql+pymysql://mlflow_user:mlflow@mlflow-mysql.kubeflow:3306/mlflow_database --default-artifact-root s3://mlflow/ --host 0.0.0.0"]
         env:
         - name: MLFLOW_S3_ENDPOINT_URL
           value: 'minio-service.kubeflow:9000'
