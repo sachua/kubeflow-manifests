@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mlflow-mysql
+  labels:
+    app: katib
+    component: mysql
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3306
+      protocol: TCP
+      name: mlflow-db
+  selector:
+    app: mlflow
+    component: mysql
