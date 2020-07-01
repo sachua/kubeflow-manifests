@@ -10,6 +10,6 @@ images:
 - name: mysql/mysql-server
   newTag: 5.7.28
   newName: mysql/mysql-server
-- name: localhost:32000/mlflow_server
+- name: sachua/mlflow-server
   newTag: latest
-  newName: localhost:32000/mlflow_server
+  newName: sachua/mlflow-server
